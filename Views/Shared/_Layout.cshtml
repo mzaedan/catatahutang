@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CatatBon</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/catatanHutang.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <a class="brand" asp-area="" asp-controller="Home" asp-action="Index">
+                <span class="brand-mark">C</span>
+                <span>
+                    <strong>CatatBon</strong>
+                    <small>Toko Kelontong Berkah</small>
+                </span>
+            </a>
+
+            <nav class="side-nav" aria-label="Navigasi utama">
+                <a class="side-link active" asp-area="" asp-controller="Home" asp-action="Index">
+                    <span class="nav-icon" aria-hidden="true">⌂</span>
+                    <span>Dashboard</span>
+                </a>
+                <a class="side-link" href="#">
+                    <span class="nav-icon" aria-hidden="true">♙</span>
+                    <span>Pelanggan</span>
+                </a>
+                <a class="side-link" href="#">
+                    <span class="nav-icon" aria-hidden="true">▤</span>
+                    <span>Barang</span>
+                </a>
+                <a class="side-link" href="#">
+                    <span class="nav-icon" aria-hidden="true">✎</span>
+                    <span>Catat Bon</span>
+                </a>
+                <a class="side-link" href="#">
+                    <span class="nav-icon" aria-hidden="true">☷</span>
+                    <span>Daftar Hutang</span>
+                </a>
+                <a class="side-link" href="#">
+                    <span class="nav-icon" aria-hidden="true">▣</span>
+                    <span>Pembayaran</span>
+                </a>
+                <a class="side-link" href="#">
+                    <span class="nav-icon" aria-hidden="true">▥</span>
+                    <span>Laporan</span>
+                </a>
+                <a class="side-link" href="#">
+                    <span class="nav-icon" aria-hidden="true">↺</span>
+                    <span>Pengembalian Tabung</span>
+                </a>
+            </nav>
+
+            <button class="quick-add" type="button">
+                <span aria-hidden="true">＋</span>
+                <span>Catat Hutang Baru</span>
+            </button>
+        </aside>
+
+        <div class="workspace">
+            <header class="topbar">
+                <form class="search-box" role="search">
+                    <span aria-hidden="true">⌕</span>
+                    <input type="search" placeholder="Cari pelanggan atau transaksi..." aria-label="Cari pelanggan atau transaksi" />
+                </form>
+                <div class="top-actions">
+                    <button class="icon-button" type="button" aria-label="Notifikasi">♧</button>
+                    <button class="icon-button" type="button" aria-label="Pengaturan">⚙</button>
+                    <div class="profile-chip">
+                        <span>
+                            <strong>Pak Berkah</strong>
+                            <small>Pemilik Toko</small>
+                        </span>
+                        <span class="avatar" aria-hidden="true">PB</span>
+                    </div>
+                </div>
+            </header>
+
+            <main role="main" class="page-content">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
