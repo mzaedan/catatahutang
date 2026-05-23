@@ -142,6 +142,14 @@ input {
 }
 
 .workspace {
+  display: flex;
+  min-width: 0;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
   min-width: 0;
 }
 
@@ -241,6 +249,23 @@ input {
   display: grid;
   gap: 22px;
   padding: 30px;
+}
+
+.workspace-footer {
+  display: flex;
+  min-height: 66px;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.86);
+  padding: 0 30px;
+  color: var(--muted);
+  backdrop-filter: blur(16px);
+}
+
+.workspace-footer small {
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 .page-heading h1 {
@@ -665,6 +690,12 @@ input {
 
   .page-content {
     padding: 20px 16px 90px;
+  }
+
+  .workspace-footer {
+    min-height: 56px;
+    justify-content: center;
+    padding: 0 16px;
   }
 
   .metric-grid,

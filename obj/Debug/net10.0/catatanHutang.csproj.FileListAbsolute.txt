@@ -2,7 +2,6 @@ D:\coding\catatanHutang\bin\Debug\net10.0\appsettings.Development.json
 D:\coding\catatanHutang\bin\Debug\net10.0\appsettings.json
 D:\coding\catatanHutang\bin\Debug\net10.0\catatanHutang.staticwebassets.runtime.json
 D:\coding\catatanHutang\bin\Debug\net10.0\catatanHutang.staticwebassets.endpoints.json
-D:\coding\catatanHutang\bin\Debug\net10.0\catatanHutang.exe
 D:\coding\catatanHutang\bin\Debug\net10.0\catatanHutang.deps.json
 D:\coding\catatanHutang\bin\Debug\net10.0\catatanHutang.runtimeconfig.json
 D:\coding\catatanHutang\bin\Debug\net10.0\catatanHutang.dll
@@ -21,7 +20,6 @@ D:\coding\catatanHutang\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
 D:\coding\catatanHutang\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\coding\catatanHutang\obj\Debug\net10.0\scopedcss\bundle\catatanHutang.styles.css
 D:\coding\catatanHutang\obj\Debug\net10.0\scopedcss\projectbundle\catatanHutang.bundle.scp.css
-D:\coding\catatanHutang\obj\Debug\net10.0\compressed\hgm3guol0s-{0}-b9sayid5wm-b9sayid5wm.gz
 D:\coding\catatanHutang\obj\Debug\net10.0\compressed\6jml5xdgv1-{0}-61n19gt1b8-61n19gt1b8.gz
 D:\coding\catatanHutang\obj\Debug\net10.0\compressed\cgyd8ksxuy-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 D:\coding\catatanHutang\obj\Debug\net10.0\compressed\gobtuwykgp-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -95,3 +93,5 @@ D:\coding\catatanHutang\obj\Debug\net10.0\refint\catatanHutang.dll
 D:\coding\catatanHutang\obj\Debug\net10.0\catatanHutang.pdb
 D:\coding\catatanHutang\obj\Debug\net10.0\catatanHutang.genruntimeconfig.cache
 D:\coding\catatanHutang\obj\Debug\net10.0\ref\catatanHutang.dll
+D:\coding\catatanHutang\obj\Debug\net10.0\catatanHutang.sourcelink.json
+D:\coding\catatanHutang\obj\Debug\net10.0\compressed\hgm3guol0s-{0}-9utv95zu0b-9utv95zu0b.gz

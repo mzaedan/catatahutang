@@ -4,7 +4,7 @@ using catatanHutang.Models;
 
 namespace catatanHutang.Controllers;
 
-public class HomeController : Controller
+public class DashboardController : Controller
 {
     public IActionResult Index()
     {
