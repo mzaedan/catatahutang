@@ -1,0 +1,64 @@
+@{
+    ViewData["Title"] = "Master Data Barang";
+
+    var barangList = new[]
+    {
+        new { Name = "Beras Premium 5kg", Category = "Sembako", Price = "Rp 75.000", Unit = "Karung", Tone = "item-beige" },
+        new { Name = "Minyak Goreng 2L", Category = "Kebutuhan Dapur", Price = "Rp 34.500", Unit = "Pcs", Tone = "item-gold" },
+        new { Name = "Gula Pasir Putih", Category = "Sembako", Price = "Rp 16.000", Unit = "kg", Tone = "item-slate" },
+        new { Name = "Isi Ulang Gas 3kg", Category = "LPG", Price = "Rp 22.000", Unit = "Tabung", Tone = "item-navy" }
+    };
+}
+
+<section class="customer-header">
+    <div class="page-heading py-2">
+        <h1 class="mb-0 fw-bold">Master Data Barang</h1>
+        <p class="mb-0 text-secondary">Kelola daftar produk, stok, dan harga jual tokomu.</p>
+    </div>
+
+    <button class="add-customer-button" type="button">
+        <span aria-hidden="true">+</span>
+        <span>Tambah Barang</span>
+    </button>
+</section>
+
+<section class="panel customer-list-panel">
+    <div class="table-responsive">
+        <table class="dashboard-table customer-table product-table">
+            <thead>
+                <tr>
+                    <th>Nama Barang</th>
+                    <th>Harga Jual</th>
+                    <th>Satuan</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in barangList)
+                {
+                    <tr>
+                        <td>
+                            <strong>@item.Name</strong>
+                        </td>
+                        <td><strong class="text-success">@item.Price</strong></td>
+                        <td>@item.Unit</td>
+                        <td>
+                            <button class="icon-inline edit" type="button" aria-label="Edit">/</button>
+                            <button class="icon-inline delete" type="button" aria-label="Hapus">x</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-footer">
+        <p>Menampilkan 4 dari 142 barang</p>
+        <nav class="pagination-bar" aria-label="Halaman data barang">
+            <button class="page-button muted" type="button">Sebelumnya</button>
+            <button class="page-button active" type="button" aria-current="page">1</button>
+            <button class="page-button" type="button">2</button>
+            <button class="page-button muted" type="button">Berikutnya</button>
+        </nav>
+    </div>
+</section>

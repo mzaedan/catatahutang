@@ -1,0 +1,70 @@
+@{
+    ViewData["Title"] = "Daftar Catat Bon";
+
+    var catatan = new[]
+    {
+        new { No = "#BON-9821", TanggalHari = "12 Okt", TanggalTahun = "2023", Inisial = "AS", Tone = "initial-blue", Pelanggan = "Agus Setiawan", Total = "Rp 450.000", Sisa = "Rp 450.000", Status = "Belum Lunas", StatusTone = "late", SisaTone = "debt-danger" },
+        new { No = "#BON-9820", TanggalHari = "11 Okt", TanggalTahun = "2023", Inisial = "SM", Tone = "initial-green", Pelanggan = "Siti Maryam", Total = "Rp 1.200.000", Sisa = "Rp 0", Status = "Lunas", StatusTone = "safe", SisaTone = "debt-safe" },
+        new { No = "#BON-9819", TanggalHari = "11 Okt", TanggalTahun = "2023", Inisial = "BP", Tone = "initial-gray", Pelanggan = "Bambang Pamungkas", Total = "Rp 850.000", Sisa = "Rp 350.000", Status = "Cicilan", StatusTone = "installment", SisaTone = "debt-mid" },
+        new { No = "#BON-9818", TanggalHari = "10 Okt", TanggalTahun = "2023", Inisial = "RK", Tone = "initial-red", Pelanggan = "Ratna Kartika", Total = "Rp 2.150.000", Sisa = "Rp 2.150.000", Status = "Belum Lunas", StatusTone = "late", SisaTone = "debt-danger" }
+    };
+}
+
+<section class="customer-header">
+    <div class="page-heading py-2">
+        <h1 class="mb-0 fw-bold">Daftar Catat Bon</h1>
+        <p class="mb-0 text-secondary">Kelola dan pantau semua rekaman hutang pelanggan Anda.</p>
+    </div>
+
+    <button class="add-customer-button" type="button">
+        <span aria-hidden="true">+</span>
+        <span>Tambah Catatan Baru</span>
+    </button>
+</section>
+
+<section class="panel customer-list-panel catatbon-panel">
+    <div class="table-responsive">
+        <table class="dashboard-table customer-table catatbon-table">
+            <thead>
+                <tr>
+                    <th>No_Transaksi</th>
+                    <th>Tanggal</th>
+                    <th>Nama Pelanggan</th>
+                    <th>Total Belanja</th>
+                    <th>Sisa Hutang</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in catatan)
+                {
+                    <tr>
+                        <td><strong class="text-success">@item.No</strong></td>
+                        <td>
+                            <span class="date-main">@item.TanggalHari</span>
+                            <span class="date-sub">@item.TanggalTahun</span>
+                        </td>
+                        <td>
+                            <strong>@item.Pelanggan</strong>
+                        </td>
+                        <td>@item.Total</td>
+                        <td class="@item.SisaTone"><strong>@item.Sisa</strong></td>
+                        <td><span class="status @item.StatusTone">@item.Status</span></td>
+                        <td><button class="catatbon-detail-button" type="button">Detail</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-footer catatbon-footer">
+        <p>Menampilkan 4 dari 15 catatan</p>
+        <nav class="pagination-bar" aria-label="Halaman daftar catat bon">
+            <button class="page-button muted" type="button">Sebelumnya</button>
+            <button class="page-button active" type="button" aria-current="page">1</button>
+            <button class="page-button" type="button">2</button>
+            <button class="page-button muted" type="button">Berikutnya</button>
+        </nav>
+    </div>
+</section>

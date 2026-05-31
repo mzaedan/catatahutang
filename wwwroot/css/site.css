@@ -611,6 +611,21 @@ input {
   background: var(--green-soft);
 }
 
+.status.installment {
+  color: #4b5563;
+  background: #e5e7eb;
+}
+
+.initial-red {
+  color: #e11d48;
+  background: #fff1f2;
+}
+
+.initial-blue {
+  color: #4f67b3;
+  background: #e7edff;
+}
+
 .detail-button {
   min-width: 68px;
   min-height: 34px;
@@ -636,6 +651,241 @@ input {
   box-shadow: 0 18px 30px rgba(24, 199, 111, 0.35);
   font-size: 1.55rem;
   font-weight: 900;
+}
+
+.customer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.add-customer-button {
+  display: inline-flex;
+  min-width: 220px;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  background: var(--green);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.add-customer-button span:first-child {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.customer-list-panel {
+  overflow: hidden;
+  padding: 0;
+}
+
+.customer-table {
+  min-width: 760px;
+}
+
+.customer-table th {
+  height: 50px;
+  border-top: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.customer-table td {
+  height: 76px;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.customer-table td:first-child strong,
+.customer-table td:nth-child(4) strong {
+  color: #02152f;
+  font-size: 1.1rem;
+  font-weight: 900;
+  font-weight: 500;
+}
+
+.customer-table em {
+  color: #475569;
+  font-style: italic;
+}
+
+.customer-detail-button {
+  min-width: 66px;
+  min-height: 30px;
+  border: 0;
+  border-radius: 7px;
+  color: #475569;
+  background: #dfe4e8;
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.product-table td:nth-child(3) {
+  color: #334155;
+}
+
+.icon-inline {
+  display: inline-grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 900;
+}
+
+.icon-inline.edit {
+  color: #0a8b47;
+}
+
+.icon-inline.delete {
+  color: #ef4444;
+}
+
+.table-footer {
+  display: flex;
+  min-height: 68px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid var(--border);
+  background: #f8fafc;
+  padding: 0 24px;
+}
+
+.table-footer p {
+  margin: 0;
+  color: #334155;
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
+.catatbon-panel {
+  padding-bottom: 0;
+}
+
+.catatbon-table th {
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+}
+
+.catatbon-table td {
+  font-size: 0.9rem;
+}
+
+.catatbon-table td:nth-child(2) {
+  color: #334155;
+}
+
+.catatbon-table td:nth-child(1) strong {
+  font-size: 0.84rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.catatbon-table td:nth-child(4),
+.catatbon-table td:nth-child(5) {
+  white-space: nowrap;
+}
+
+.catatbon-table td:nth-child(6),
+.catatbon-table td:nth-child(7) {
+  text-align: center;
+}
+
+.catatbon-table td:nth-child(6) .status {
+  min-width: 74px;
+}
+
+.date-main,
+.date-sub {
+  display: block;
+  line-height: 1.2;
+}
+
+.date-main {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.date-sub {
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.debt-danger strong {
+  color: #dc2626;
+}
+
+.debt-safe strong {
+  color: #16a34a;
+}
+
+.debt-mid strong {
+  color: #334155;
+}
+
+.catatbon-detail-button {
+  border: 0;
+  color: var(--green);
+  background: transparent;
+  font-weight: 700;
+}
+
+.catatbon-footer {
+  min-height: 60px;
+}
+
+.table-nav-text {
+  border: 0;
+  color: #334155;
+  background: transparent;
+  font-weight: 600;
+}
+
+.pagination-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-button {
+  display: grid;
+  min-width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid #d6dee8;
+  border-radius: 8px;
+  color: #334155;
+  background: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.page-button.active {
+  border-color: var(--green);
+  color: #ffffff;
+  background: var(--green);
+}
+
+.page-button.muted {
+  color: #cbd5e1;
+  background: #f8fafc;
+}
+
+.page-dots {
+  color: #475569;
+  font-weight: 800;
 }
 
 @media (max-width: 1180px) {
@@ -736,5 +986,24 @@ input {
 
   .legend {
     flex-wrap: wrap;
+  }
+
+  .customer-header,
+  .table-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .add-customer-button {
+    width: 100%;
+  }
+
+  .table-footer {
+    padding: 16px;
+  }
+
+  .pagination-bar {
+    overflow-x: auto;
+    padding-bottom: 2px;
   }
 }
