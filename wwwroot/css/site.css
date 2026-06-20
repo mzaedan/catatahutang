@@ -247,6 +247,7 @@ input {
 
 .page-content {
   display: grid;
+  align-content: start;
   gap: 22px;
   padding: 30px;
 }
@@ -681,6 +682,7 @@ input {
 }
 
 .customer-list-panel {
+  align-self: start;
   overflow: hidden;
   padding: 0;
 }
@@ -1005,5 +1007,197 @@ input {
   .pagination-bar {
     overflow-x: auto;
     padding-bottom: 2px;
+  }
+}
+
+/* ============================================
+   Form Panel & Actions (Pelanggan Create)
+   ============================================ */
+
+.back-button {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1.1rem;
+  font-weight: 800;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.back-button:hover {
+  border-color: var(--green);
+  color: var(--green);
+  background: var(--green-soft);
+}
+
+.form-panel {
+  display: grid;
+  gap: 22px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 22px;
+}
+
+.form-group {
+  display: grid;
+  gap: 8px;
+}
+
+.form-group-full {
+  grid-column: 1 / -1;
+}
+
+.form-panel .form-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  color: #0f172a;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.form-panel .form-control {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #d6dee8;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 10px 14px;
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-panel .form-control::placeholder {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.form-panel .form-control:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(0, 139, 71, 0.12);
+  outline: 0;
+}
+
+.form-panel textarea.form-control {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.form-panel .text-danger.small {
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+
+.btn-primary-action,
+.btn-secondary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 160px;
+  min-height: 44px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 22px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+}
+
+.btn-primary-action {
+  color: #ffffff;
+  background: var(--green);
+}
+
+.btn-primary-action:hover {
+  background: #007a3d;
+}
+
+.btn-primary-action:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary-action {
+  border: 1px solid #d6dee8;
+  color: #334155;
+  background: #ffffff;
+}
+
+.btn-secondary-action:hover {
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+/* ============================================
+   Customer Alert & Empty State
+   ============================================ */
+
+.customer-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 8px;
+  color: #065f46;
+  background: var(--green-soft);
+  padding: 12px 16px;
+  font-weight: 700;
+}
+
+.customer-alert .alert-icon {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  place-items: center;
+  border-radius: 50%;
+  color: #ffffff;
+  background: var(--green);
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.empty-state {
+  padding: 36px 16px !important;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    justify-content: stretch;
+  }
+
+  .btn-primary-action,
+  .btn-secondary-action {
+    flex: 1 1 auto;
   }
 }

@@ -1,7 +1,21 @@
+using catatanHutang.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Register EF Core DbContext with MySQL (Pomelo)
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found in configuration.");
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(
+        connectionString,
+        ServerVersion.AutoDetect(connectionString),
+        mysqlOptions => mysqlOptions.EnableRetryOnFailure()
+    ));
 
 var app = builder.Build();
 

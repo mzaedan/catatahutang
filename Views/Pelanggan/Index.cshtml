@@ -1,13 +1,35 @@
+@model List<catatanHutang.Models.Pelanggan.User>
 @{
     ViewData["Title"] = "Data Pelanggan";
 
-    var pelanggan = new[]
+    var successMessage = TempData["SuccessMessage"] as string;
+    Func<string, (string Initial, string Tone)> resolveInitial = name =>
     {
-        new { Initial = "PB", Name = "Pak Budi", Phone = "08123456789", Address = "Jl. Merdeka No. 10", Debt = "Rp137.000", Tone = "initial-red" },
-        new { Initial = "BA", Name = "Bu Ani", Phone = "08571234567", Address = "Gang Mawar", Debt = "Rp50.000", Tone = "initial-green" },
-        new { Initial = "MA", Name = "Mas Agus", Phone = "08998877665", Address = "Depan Mushola", Debt = "Rp210.000", Tone = "initial-blue" },
-        new { Initial = "SP", Name = "Siti Putri", Phone = "08129988221", Address = "Jl. Anggrek No. 5", Debt = "Rp0", Tone = "initial-green" }
+        if (string.IsNullOrWhiteSpace(name))
+            return ("?", "initial-gray");
+
+        var parts = name.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        var initials = parts.Length == 1
+            ? parts[0].Substring(0, Math.Min(2, parts[0].Length)).ToUpperInvariant()
+            : string.Concat(parts[0][0], parts[parts.Length - 1][0]).ToUpperInvariant();
+
+        var tone = (initials[0] % 3) switch
+        {
+            0 => "initial-red",
+            1 => "initial-green",
+            _ => "initial-blue"
+        };
+
+        return (initials, tone);
     };
+}
+
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <div class="alert alert-success customer-alert" role="status">
+        <span class="alert-icon" aria-hidden="true">&#10003;</span>
+        <span>@successMessage</span>
+    </div>
 }
 
 <section class="customer-header">
@@ -16,10 +38,10 @@
         <p class="mb-0 text-secondary">Kelola daftar pelanggan dan pantau status hutang mereka dengan mudah.</p>
     </div>
 
-    <button class="add-customer-button" type="button">
+    <a asp-action="Create" class="add-customer-button text-decoration-none">
         <span aria-hidden="true">+</span>
         <span>Tambah Pelanggan</span>
-    </button>
+    </a>
 </section>
 
 <section class="panel customer-list-panel">
@@ -30,23 +52,33 @@
                     <th>Nama Pelanggan</th>
                     <th>No. HP</th>
                     <th>Alamat</th>
-                    <th>Total Hutang</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in pelanggan)
+                @if (Model != null && Model.Count > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        var (initial, tone) = resolveInitial(item.NamaPelanggan);
+                        <tr>
+                            <td>
+                                <span class="person @tone" aria-hidden="true">@initial</span>
+                                <strong>@item.NamaPelanggan</strong>
+                            </td>
+                            <td>@item.NoHP</td>
+                            <td><em>@item.Alamat</em></td>
+                            <td>
+                                <button class="customer-detail-button" type="button">Detail</button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
                 {
                     <tr>
-                        <td>
-                            <span class="person @item.Tone" aria-hidden="true">@item.Initial</span>
-                            <strong>@item.Name</strong>
-                        </td>
-                        <td>@item.Phone</td>
-                        <td><em>@item.Address</em></td>
-                        <td><strong>@item.Debt</strong></td>
-                        <td>
-                            <button class="customer-detail-button" type="button">Detail</button>
+                        <td colspan="4" class="empty-state">
+                            Belum ada pelanggan. Klik <strong>Tambah Pelanggan</strong> untuk menambahkan data pertama.
                         </td>
                     </tr>
                 }
@@ -55,15 +87,6 @@
     </div>
 
     <div class="table-footer">
-        <p>Menampilkan 1 - 4 dari 48 Pelanggan</p>
-        <nav class="pagination-bar" aria-label="Halaman data pelanggan">
-            <button class="page-button muted" type="button" aria-label="Halaman sebelumnya">‹</button>
-            <button class="page-button active" type="button" aria-current="page">1</button>
-            <button class="page-button" type="button">2</button>
-            <button class="page-button" type="button">3</button>
-            <span class="page-dots">...</span>
-            <button class="page-button" type="button">12</button>
-            <button class="page-button" type="button" aria-label="Halaman berikutnya">›</button>
-        </nav>
+        <p>Menampilkan @(Model?.Count ?? 0) pelanggan</p>
     </div>
 </section>

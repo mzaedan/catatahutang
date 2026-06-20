@@ -1,0 +1,80 @@
+@model catatanHutang.Models.Pelanggan.PelangganViewModel
+@{
+    ViewData["Title"] = "Tambah Pelanggan";
+}
+
+<section class="page-heading py-2 d-flex align-items-center gap-3">
+    <a asp-action="Index" class="back-button" aria-label="Kembali ke daftar pelanggan">
+        <span aria-hidden="true">&#8592;</span>
+    </a>
+    <div>
+        <h1 class="mb-0 fw-bold">Tambah Pelanggan</h1>
+        <p class="mb-0 text-secondary">Lengkapi informasi pelanggan baru untuk mulai mencatat bon.</p>
+    </div>
+</section>
+
+<section class="panel form-panel">
+    <div class="panel-title">
+        <h2>Informasi Pelanggan</h2>
+        <span class="text-secondary small">Field dengan tanda <span class="text-danger">*</span> wajib diisi.</span>
+    </div>
+
+    <form asp-action="Create" asp-controller="Pelanggan" method="post" novalidate>
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label asp-for="NamaPelanggan" class="form-label">
+                    <span>Nama Pelanggan</span>
+                    <span class="text-danger" aria-hidden="true">*</span>
+                </label>
+                <input asp-for="NamaPelanggan"
+                       class="form-control"
+                       placeholder="Contoh: Pak Budi"
+                   autocomplete="name"
+                   maxlength="100" />
+                <span asp-validation-for="NamaPelanggan" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NoHP" class="form-label">
+                    <span>No. HP</span>
+                    <span class="text-danger" aria-hidden="true">*</span>
+                </label>
+                <input asp-for="NoHP"
+                       class="form-control"
+                       placeholder="Contoh: 08123456789"
+                   inputmode="tel"
+                   autocomplete="tel"
+                   maxlength="20" />
+                <span asp-validation-for="NoHP" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group form-group-full">
+                <label asp-for="Alamat" class="form-label">
+                    <span>Alamat</span>
+                    <span class="text-danger" aria-hidden="true">*</span>
+                </label>
+                <textarea asp-for="Alamat"
+                          class="form-control"
+                          rows="4"
+                          placeholder="Contoh: Jl. Merdeka No. 10, RT 02/RW 03"
+                          maxlength="250"></textarea>
+                <span asp-validation-for="Alamat" class="text-danger small"></span>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <a asp-action="Index" class="btn btn-secondary-action">Batal</a>
+            <button type="submit" class="btn btn-primary-action">
+                <span aria-hidden="true">+</span>
+                <span>Simpan Pelanggan</span>
+            </button>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
