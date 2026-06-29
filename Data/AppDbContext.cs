@@ -1,3 +1,4 @@
+using catatanHutang.Models.Barang;
 using catatanHutang.Models.Pelanggan;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,8 @@ public class AppDbContext : DbContext
 
     public DbSet<User> Users { get; set; }
 
+    public DbSet<Barang> Barangs { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -24,6 +27,14 @@ public class AppDbContext : DbContext
             entity.ToTable("user");
             entity.HasKey(u => u.Id);
             entity.Property(u => u.Id).ValueGeneratedOnAdd();
+        });
+
+        // Map entity Barang ke tabel "barang"
+        modelBuilder.Entity<Barang>(entity =>
+        {
+            entity.ToTable("barang");
+            entity.HasKey(b => b.Id);
+            entity.Property(b => b.Id).ValueGeneratedOnAdd();
         });
     }
 }

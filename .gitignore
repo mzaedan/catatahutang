@@ -24,3 +24,7 @@ packages/
 # OS files
 .DS_Store
 Thumbs.db
+
+# App settings (contains secrets like connection strings, API keys)
+appsettings.json
+appsettings.Development.json

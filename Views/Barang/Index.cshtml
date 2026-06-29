@@ -1,13 +1,16 @@
+@model List<catatanHutang.Models.Barang.Barang>
 @{
     ViewData["Title"] = "Master Data Barang";
 
-    var barangList = new[]
-    {
-        new { Name = "Beras Premium 5kg", Category = "Sembako", Price = "Rp 75.000", Unit = "Karung", Tone = "item-beige" },
-        new { Name = "Minyak Goreng 2L", Category = "Kebutuhan Dapur", Price = "Rp 34.500", Unit = "Pcs", Tone = "item-gold" },
-        new { Name = "Gula Pasir Putih", Category = "Sembako", Price = "Rp 16.000", Unit = "kg", Tone = "item-slate" },
-        new { Name = "Isi Ulang Gas 3kg", Category = "LPG", Price = "Rp 22.000", Unit = "Tabung", Tone = "item-navy" }
-    };
+    var successMessage = TempData["SuccessMessage"] as string;
+}
+
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <div class="alert alert-success customer-alert" role="status">
+        <span class="alert-icon" aria-hidden="true">&#10003;</span>
+        <span>@successMessage</span>
+    </div>
 }
 
 <section class="customer-header">
@@ -16,10 +19,10 @@
         <p class="mb-0 text-secondary">Kelola daftar produk, stok, dan harga jual tokomu.</p>
     </div>
 
-    <button class="add-customer-button" type="button">
+    <a asp-action="Create" class="add-customer-button text-decoration-none">
         <span aria-hidden="true">+</span>
         <span>Tambah Barang</span>
-    </button>
+    </a>
 </section>
 
 <section class="panel customer-list-panel">
@@ -34,17 +37,28 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in barangList)
+                @if (Model != null && Model.Count > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <strong>@item.NamaBarang</strong>
+                            </td>
+                            <td><strong class="text-success">@item.HargaJual.ToString("N0")</strong></td>
+                            <td>@item.Satuan</td>
+                            <td>
+                                <button class="icon-inline edit" type="button" aria-label="Edit">/</button>
+                                <button class="icon-inline delete" type="button" aria-label="Hapus">x</button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
                 {
                     <tr>
-                        <td>
-                            <strong>@item.Name</strong>
-                        </td>
-                        <td><strong class="text-success">@item.Price</strong></td>
-                        <td>@item.Unit</td>
-                        <td>
-                            <button class="icon-inline edit" type="button" aria-label="Edit">/</button>
-                            <button class="icon-inline delete" type="button" aria-label="Hapus">x</button>
+                        <td colspan="4" class="empty-state">
+                            Belum ada barang. Klik <strong>Tambah Barang</strong> untuk menambahkan data pertama.
                         </td>
                     </tr>
                 }
@@ -53,12 +67,6 @@
     </div>
 
     <div class="table-footer">
-        <p>Menampilkan 4 dari 142 barang</p>
-        <nav class="pagination-bar" aria-label="Halaman data barang">
-            <button class="page-button muted" type="button">Sebelumnya</button>
-            <button class="page-button active" type="button" aria-current="page">1</button>
-            <button class="page-button" type="button">2</button>
-            <button class="page-button muted" type="button">Berikutnya</button>
-        </nav>
+        <p>Menampilkan @(Model?.Count ?? 0) barang</p>
     </div>
 </section>
