@@ -4,6 +4,8 @@ namespace catatanHutang.Models.Barang;
 
 public class BarangViewModel
 {
+    public int Id { get; set; }
+
     [Required(ErrorMessage = "Nama barang wajib diisi.")]
     [StringLength(150, ErrorMessage = "Nama barang maksimal 150 karakter.")]
     [Display(Name = "Nama Barang")]

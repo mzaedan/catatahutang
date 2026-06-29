@@ -753,6 +753,25 @@ input {
   color: #ef4444;
 }
 
+.inline-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inline-actions form {
+  margin: 0;
+}
+
+.customer-alert-danger {
+  color: #9f1239;
+  background: var(--red-soft);
+}
+
+.customer-alert-danger .alert-icon {
+  background: var(--red);
+}
+
 .table-footer {
   display: flex;
   min-height: 68px;

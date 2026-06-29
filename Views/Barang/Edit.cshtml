@@ -1,6 +1,6 @@
 @model catatanHutang.Models.Barang.BarangViewModel
 @{
-    ViewData["Title"] = "Tambah Barang";
+    ViewData["Title"] = "Edit Barang";
 }
 
 <section class="page-heading py-2 d-flex align-items-center gap-3">
@@ -8,8 +8,8 @@
         <span aria-hidden="true">&#8592;</span>
     </a>
     <div>
-        <h1 class="mb-0 fw-bold">Tambah Barang</h1>
-        <p class="mb-0 text-secondary">Lengkapi informasi barang baru untuk ditambahkan ke daftar produk.</p>
+        <h1 class="mb-0 fw-bold">Edit Barang</h1>
+        <p class="mb-0 text-secondary">Perbarui informasi barang yang sudah tersimpan.</p>
     </div>
 </section>
 
@@ -19,8 +19,9 @@
         <span class="text-secondary small">Field dengan tanda <span class="text-danger">*</span> wajib diisi.</span>
     </div>
 
-    <form asp-action="Create" asp-controller="Barang" method="post" novalidate>
+    <form asp-action="Edit" asp-controller="Barang" asp-route-id="@Model.Id" method="post" novalidate>
         @Html.AntiForgeryToken()
+        <input asp-for="Id" type="hidden" />
         <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
 
         <div class="form-grid">
@@ -45,10 +46,8 @@
                 <input asp-for="HargaJual"
                        class="form-control"
                        placeholder="Contoh: 75000"
-                       type="text"
                        inputmode="numeric"
-                       autocomplete="off"
-                       data-currency-input="true" />
+                       autocomplete="off" />
                 <span asp-validation-for="HargaJual" class="text-danger small"></span>
             </div>
 
@@ -69,8 +68,8 @@
         <div class="form-actions">
             <a asp-action="Index" class="btn btn-secondary-action">Batal</a>
             <button type="submit" class="btn btn-primary-action">
-                <span aria-hidden="true">+</span>
-                <span>Simpan Barang</span>
+                <span aria-hidden="true">✓</span>
+                <span>Simpan Perubahan</span>
             </button>
         </div>
     </form>
@@ -78,25 +77,4 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-    <script>
-        (() => {
-            const inputs = document.querySelectorAll('[data-currency-input="true"]');
-
-            const formatNumber = value => value
-                .replace(/\D/g, '')
-                .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-
-            inputs.forEach(input => {
-                input.value = formatNumber(input.value);
-
-                input.addEventListener('input', () => {
-                    input.value = formatNumber(input.value);
-                });
-
-                input.form?.addEventListener('submit', () => {
-                    input.value = input.value.replace(/\./g, '');
-                });
-            });
-        })();
-    </script>
 }

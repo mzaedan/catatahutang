@@ -3,6 +3,7 @@
     ViewData["Title"] = "Master Data Barang";
 
     var successMessage = TempData["SuccessMessage"] as string;
+    var errorMessage = TempData["ErrorMessage"] as string;
 }
 
 @if (!string.IsNullOrEmpty(successMessage))
@@ -10,6 +11,14 @@
     <div class="alert alert-success customer-alert" role="status">
         <span class="alert-icon" aria-hidden="true">&#10003;</span>
         <span>@successMessage</span>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger customer-alert customer-alert-danger" role="alert">
+        <span class="alert-icon" aria-hidden="true">!</span>
+        <span>@errorMessage</span>
     </div>
 }
 
@@ -48,8 +57,21 @@
                             <td><strong class="text-success">@item.HargaJual.ToString("N0")</strong></td>
                             <td>@item.Satuan</td>
                             <td>
-                                <button class="icon-inline edit" type="button" aria-label="Edit">/</button>
-                                <button class="icon-inline delete" type="button" aria-label="Hapus">x</button>
+                                <div class="inline-actions">
+                                    <a asp-action="Edit"
+                                       asp-route-id="@item.Id"
+                                       class="icon-inline edit text-decoration-none"
+                                       aria-label="Edit @item.NamaBarang">&#9998;</a>
+                                    <form asp-action="Delete"
+                                          asp-route-id="@item.Id"
+                                          method="post"
+                                          onsubmit="return confirm('Hapus barang ini?');">
+                                        @Html.AntiForgeryToken()
+                                        <button class="icon-inline delete"
+                                                type="submit"
+                                                aria-label="Hapus @item.NamaBarang">&#128465;</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     }
